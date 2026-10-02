@@ -35,7 +35,7 @@ After each new phase, inspect the ordered pair or three-pose strip at native siz
 
 Use the existing global/stage/per-pose caps. Prioritize a central ambiguity or broken transition, not a uniform repair call for every pose. Each repair states the failed visible criterion and carries forward the identity/contact contract; record why it is preferable to another unchanged attempt. Do not spend more calls merely because allowance remains. At an exhausted central-action gate, stop the dependent sequence or deliver a clearly incomplete review package. Do not change the skill, widen masks, hand-paint art, rename poses to evade caps, or relabel an uncertain phase as accepted.
 
-If the isolated run fails, preserve the evidence and report it. A later skill improvement may strengthen this general workflow; it must not insert the failed trial's exact pixel coordinates, artwork, or an answer-specific prompt into the clean validation trial.
+Preserve failed action evidence and report the observed blocker; do not conceal it by changing acceptance criteria.
 
 
 ## Local-motion coverage readiness

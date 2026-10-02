@@ -44,5 +44,13 @@
   },
   "overall_status": "unverified",
   "remaining_defects": [],
-  "repairs_or_timing_changes": []
+  "repairs_or_timing_changes": [],
+  "checkpoint_review": {
+    "checkpoint": null,
+    "coverage": "unverified",
+    "reviewer": null,
+    "verdict": "unverified",
+    "report": null,
+    "limitations": []
+  }
 }

@@ -1,6 +1,6 @@
 # Portable handoff: one bundle, ordinary request
 
-Use this for stage boundaries, cross-session work and delivery. A fresh session must need only the bundle and normal next task. Do not rely on prior chat, private memory, original absolute paths or a parent supplying missing instructions. The bundle preserves task-local approval/delegation evidence; it does not grant authority beyond that evidence and the current request.
+Use this for full-path stage boundaries, cross-session work and explicitly requested portable delivery. Standalone same-session delivery uses `standalone-records.md` instead. A fresh session must need only the bundle and normal next task. Do not rely on prior chat, private memory, original absolute paths or a parent supplying missing instructions. The bundle preserves task-local approval/delegation evidence; it does not grant authority beyond that evidence and the current request.
 
 ## Create from actual evidence
 
@@ -33,13 +33,19 @@ Generate a current template for exact required field names before filling; optio
 
 Every boundary carries identity/profile plus only the relevant views; retain all accepted required sources. A reference study accepted for identity is still not a native_master. Mark unresolved hidden-detail decisions or action-readiness problems clearly. Do not write `ready` when the required accepted assets are absent, corrupt or outside their approved role.
 
+## Static single-cel handoff
+
+For one requested cel, use `stage: refinement` with accepted `identity`, `native_master` and requested `pose` assets in `required_assets`; the pose names its master and shares the native contract. Preserve the explicit single-cel request and reviews. No timeline or playback claim is needed: this envelope describes static native assets, not a completed animation. `stage: animation` still requires a real timeline and its poses. Pipeline static QA may use a single-entry duration placeholder internally; that is not a user-requested animation or a reason to deliver a fabricated loop.
+
 ## Budget and continuation
 
 Keep all starts, including failure/cancellation/pending, with stable attempt ID, stage, semantic pose, repair link and outcome. Budget_state reports attempted_calls, repairs_total, repairs_by_pose, remaining_calls, remaining_repairs_total and remaining_repairs_by_pose. These are computed from run evidence or an explicit self-contained attempts evidence file, then checked against the unchanged project caps. Do not reset counts at stage/session boundaries or rename a repaired semantic pose to escape its limit.
 
 For planned split sessions keep the ledger open. Copy the whole checked handoff into a fresh directory, validate there, inspect the accepted images and continue from its `run/` frozen snapshots and counters. Do not reuse original machine paths, initialize a new allowance, or finalize session 1 as though the overall task ended. Preserve the first bundle as a checkpoint; continue a separate working copy so later writes do not change delivered evidence. Check that copy before continuing. Once its run records or files change, its old bundle inventory is intentionally stale: treat it as the active project, not a newly received immutable handoff. At the next boundary create/check a new bundle from current evidence; never rewrite the old inventory merely to hide changes.
 
-For a standalone imported asset without a prior ledger, supply the actual available task-local evidence, state unknown historical generation use, and establish the new task's budget explicitly. Do not invent zero historical calls or a user approval. A budget allowance and acceptance must come from the current task or preserved evidence.
+For a compact standalone task expanding into continuation, follow the evidence-only migration in `standalone-records.md`: preserve the entire task directory as a support tree, export all attempts as budget evidence and continue its counters. Do not invent a same_run ledger or initialize a fresh allowance.
+
+For an imported asset without a prior ledger, supply the actual available task-local evidence, state unknown historical generation use, and establish the new task's budget explicitly. Do not invent zero historical calls or a user approval. A budget allowance and acceptance must come from the current task or preserved evidence.
 
 ## Fresh-session acceptance check
 

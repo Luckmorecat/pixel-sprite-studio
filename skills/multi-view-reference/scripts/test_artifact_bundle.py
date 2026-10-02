@@ -573,5 +573,18 @@ class BundleTests(unittest.TestCase):
             self.create()
 
 
+    def test_static_single_cel_handoff_has_no_invented_timeline(self):
+        self.spec['assets'].append(self.asset('requested-cel', 'pose.png', 'pose'))
+        self.spec['required_assets'].append('requested-cel')
+        self.spec['next_step'] = 'Deliver the requested single cel, not an animation'
+        report = self.create()
+        self.assertTrue(report['handoff_ready'])
+        self.assertFalse(self.manifest().get('timeline'))
+        self.spec['stage'] = 'animation'
+        self.output = self.root / 'not-an-animation'
+        with self.assertRaisesRegex(ValueError, 'Animation handoff needs timeline'):
+            self.create()
+
+
 if __name__ == '__main__':
     unittest.main()

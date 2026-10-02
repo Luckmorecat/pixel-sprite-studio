@@ -1,6 +1,6 @@
-# Reproducible runs and bounded skill improvement
+# Multi-stage and cross-session records
 
-Use the bundled `scripts/run_ledger.py` (Python 3 standard library with POSIX file locking (Linux/macOS/WSL)). Exact stored schemas and complete options are in `run-ledger-interface.md`. It records evidence and budgets; it does not invoke imagegen, choose art, certify quality, or grant permission. Copy exact current skill directories before a full-flow/trial run and work from those frozen copies. Locate every participating installed directory through the catalog/frontmatter first, including all downstream stages needed after a session split. Never assume sibling names. Resolve installed skill, run and evidence directories to canonical real paths before use; symlink roots or parents are intentionally rejected. Use a `--copy` skill install or resolve the actual target of a symlink installation.
+Use the bundled `scripts/run_ledger.py` (Python 3 standard library with POSIX file locking (Linux/macOS/WSL)). Exact stored schemas and complete options are in `run-ledger-interface.md`. It records evidence and budgets; it does not invoke imagegen, choose art, certify quality, or grant permission. For this full continuation path, snapshot the participating runtime packages so later sessions can use the same helper versions. Standalone tasks use `standalone-records.md` instead. Locate every participating installed directory through the catalog/frontmatter first, including all downstream stages needed after a session split. Never assume sibling names. Resolve installed skill, run and evidence directories to canonical real paths before use; symlink roots or parents are intentionally rejected. Use a `--copy` skill install or resolve the actual target of a symlink installation.
 
 ## Initialize once, before generation
 
@@ -13,13 +13,13 @@ python3 <this-skill>/scripts/run_ledger.py init run-001 \
   --skill action-pose-design=<resolved-action-directory> \
   --skill refine-pixel-art=<resolved-refinement-directory> \
   --skill animate-pixel-sprite=<resolved-animation-directory> \
-  --request-file request.txt --project sprite-trial \
+  --request-file request.txt --project sprite-project \
   --max-attempts 24 --max-new-poses 24 --max-stage-repairs 6 --max-pose-repairs 2 --max-total-repairs 6
 ```
 
-The parent directory must exist; the run path must not exist. Counts above are full-flow defaults only: use any tighter user cap. Standalone identity/views/action/refinement/animation runs snapshot only their applicable skills and use their narrower budgets. Always supply stable distinct `--pose` IDs for candidate/master/animation calls (for example `identity-a`, `master`, `page-lift`) so the new-pose cap applies; the global attempt cap also counts pose-less calls. Stage-specific stricter caps in the project contract still apply, even if a generic helper cap is higher.
+The parent directory must exist; the run path must not exist. Counts above are full-flow defaults only: use any tighter user cap. Snapshot only participating skills; optional unused stages are not required. Always supply stable distinct `--pose` IDs for candidate/master/animation calls (for example `identity-a`, `master`, `page-lift`) so the new-pose cap applies; the global attempt cap also counts pose-less calls. Stage-specific stricter caps in the project contract still apply, even if a generic helper cap is higher.
 
-Outputs: `run.json` with exact request, budgets and each skill's per-file hashes/aggregate version identity; `snapshots/<label>/` with read-only copies; append-only `events.jsonl`; read-only copied input/output evidence under `evidence/`. Snapshots include scripts, references, assets and VERSION. Local permissions plus hashes are tamper-evident evidence, not cryptographic authentication or a storage lock against the owner. Preserve this directory unchanged after finalization and record the reported terminal hash in the trial report.
+Outputs: `run.json` with exact request, budgets and each skill's per-file hashes/aggregate version identity; `snapshots/<label>/` with read-only copies; append-only `events.jsonl`; read-only copied input/output evidence under `evidence/`. Snapshots include scripts, references, assets and VERSION. Local permissions plus hashes are tamper-evident evidence, not cryptographic authentication or a storage lock against the owner. Preserve this directory unchanged after finalization and record the reported terminal hash in the delivery record.
 
 ## Record every generation attempt
 
@@ -71,17 +71,6 @@ Use `succeeded`, `failed`, or `incomplete` honestly. Keep detailed technical/vis
 Before the boundary, create/check the self-contained artifact bundle with its complete open `run_directory`. Copy the bundle and use only the copied assets/project and `run/` paths afterward. Inspect the copied run and continue it, including its original frozen snapshots and remaining counters; do not initialize a fresh allowance. Run metadata may record original paths for provenance, but operative snapshot/evidence references are run-relative. Read assets/approvals/readiness and the ordinary next task from the bundle rather than relying on history. Keep earlier bundle versions unchanged as checkpoint evidence; use a fresh copy for continuation.
 
 Do not finalize the ledger at the identity/views session boundary when work will continue. A finalized run is terminal. If an interrupted session cannot safely continue, preserve it and carry its used counters and source/version evidence into an explicitly documented continuation; never represent prior calls as zero. The normal planned split uses the same open portable run.
-
-## Isolated improvement loop
-
-1. Finish the first trial using only the ordinary user request, frozen skill instructions and their documented scripts. Allowed within-trial pose/timing repairs must be part of that frozen workflow and budget. Do not add a private rescue prompt, manually draw pixels, change test criteria, or edit a skill mid-trial.
-2. Deliver/report its actual result, unresolved failures, budget use, artifacts and chronological ledger. Preserve the run as evidence; do not retrospectively rewrite its status or replace its output.
-3. Diagnose a general instruction/tool defect from evidence. Separate it from the generator's artistic limitation, a single taste choice, or unavailable capability. Make the narrowest authorized general skill/helper correction; do not encode coordinates, pixels, prompts, or answers specific to the failed trial just to make that trial pass. Preserve before/after versions and actual tests.
-4. Start a new clean worker/session, new directory and new snapshot. Give it the same ordinary user-level request, current skills and only the references that request needs. Do not give the previous trial's artwork, intended answers, or hidden rescue instructions. Compare results only afterward.
-5. Default improvement allowance is one diagnosed skill/tool revision pass plus one separate clean validation trial. If still blocked, report unresolved limitations and ask before a wider iteration cycle. Carry the experiment-wide improvement count into the new validation run; loading a revised skill does not reset or grant another improvement cycle. Existing tighter user limits always win. Infrastructure fixes during script unit tests are not art trials; document them separately rather than claiming a successful artistic validation.
-
-A chronological report distinguishes automated operations from visual judgments and states where automation stopped. Generative calls may not reproduce identical artwork even with exact inputs; the snapshot/ledger make the procedure and evidence reproducible, not the random outcome.
-
 
 ## Historical source resolution
 

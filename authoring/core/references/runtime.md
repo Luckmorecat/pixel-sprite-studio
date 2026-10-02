@@ -1,0 +1,13 @@
+# Runtime and portability
+
+Installation supplies instructions, templates and deterministic helpers, not model access or system programs.
+
+- Resolve this installed skill's directory first. Relative `scripts/`, `references/` and `assets/` paths refer to that directory, not the current project or a sibling skill. All runtime helpers are bundled here; no other skill is required to run them. Prefer `npx skills add ... --copy`. Before ledger snapshot/evidence operations, resolve skill, project and evidence paths to their canonical real paths: the ledger intentionally rejects symlink roots and parents. This includes OS aliases such as macOS `/tmp`; use the resolved path rather than weakening the check.
+- Use Python 3.10+ and Bash with ImageMagick 7 (`magick`) on PATH. The ledger imports POSIX `fcntl`: use Linux, macOS or Windows Subsystem for Linux, not native Windows Python. The complete suite is validated on Linux; macOS/WSL are compatible targets, not claimed tested platforms.
+- “imagegen” means an available, authorized image-generation/editing tool with reference-image input and downloadable raster output. Use its own current calling instructions and actual tool name in the ledger. No generator, credentials or model subscription are bundled. Do not assume `image_gen.imagegen` exists in every host, silently substitute a paid provider, or replace creative work with procedural drawing. If unavailable, complete only operations supported by supplied artwork and report the generation blocker.
+- Visual acceptance needs an image viewer or a vision-capable agent. Animation playback review needs a browser/viewer and actual observation. If unavailable, retain unverified status; script tests do not establish artistic success.
+- Discover optional next-stage skills by their frontmatter names. If a required next stage is absent, deliver the portable handoff and identify what is needed; never guess a private catalog ID or sibling directory.
+- Work in a separate project/output directory. Do not edit installed skills or publish user inputs, prompts, generated artwork, run ledgers or private paths to the source repository. Runtime ledgers can retain original absolute paths as historical provenance; portable copied evidence is the operative source after relocation.
+- Respect the host's permissions and install software only with appropriate authorization. Nothing installs dependencies automatically.
+
+Check requirements with `python3 --version`, `bash --version`, `magick -version`, and `python3 -c "import fcntl"`. Python helpers use the standard library. The optional Aseprite exporter is a separate skill and needs Pillow.

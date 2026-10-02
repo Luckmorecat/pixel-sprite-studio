@@ -17,6 +17,8 @@ def check(condition, message):
         raise ValueError(message)
 
 def main():
+    subprocess.run([sys.executable, str(ROOT / 'scripts/build_packages.py'), '--check'], check=True)
+    subprocess.run([sys.executable, str(ROOT / 'scripts/test_generated_parity.py')], check=True)
     skills = ROOT / 'skills'
     check({p.name for p in skills.iterdir() if p.is_dir()} == NAMES,
           'Expected exactly six skill directories')
@@ -30,6 +32,9 @@ def main():
         check(re.search(r'^description: .+', frontmatter, re.M), f'{name}: no description')
         check((directory / 'references/runtime.md').is_file(), f'{name}: no runtime guide')
         check('references/runtime.md' in text, f'{name}: runtime guide not linked')
+        for reference in set(re.findall(r'(?:references|assets|scripts)/[a-zA-Z0-9_.-]+\.(?:md|json|py|sh)', text)):
+            check((directory / reference).is_file(), f'{name}: missing entrypoint reference {reference}')
+        check('claude' not in frontmatter.lower(), f'{name}: nonportable Claude-specific frontmatter')
         for file in directory.rglob('*'):
             check(not file.is_symlink(), f'Unexpected symlink: {file}')
             if file.suffix == '.json':
@@ -41,13 +46,15 @@ def main():
                 check(not re.search(r'/workspace/|/home/agent/|/mnt/data/|skill://|skill-[0-9a-f]{20}', content),
                       f'Private/environment-specific locator: {file}')
     core = sorted(NAMES - {'export-to-aseprite'})
-    baseline = skills / core[0] / 'scripts'
-    expected = {p.name: hashlib.sha256(p.read_bytes()).hexdigest()
-                for p in baseline.iterdir() if p.is_file()}
-    for name in core[1:]:
-        actual = {p.name: hashlib.sha256(p.read_bytes()).hexdigest()
-                  for p in (skills / name / 'scripts').iterdir() if p.is_file()}
-        check(actual == expected, f'Shared core helper drift: {name}')
+    for folder in ('scripts', 'references', 'assets'):
+        baseline = ROOT / 'authoring/core' / folder
+        expected = {p.name: hashlib.sha256(p.read_bytes()).hexdigest()
+                    for p in baseline.iterdir() if p.is_file() and p.name != 'icon.svg'}
+        for name in core[1:]:
+            actual = {p.name: hashlib.sha256(p.read_bytes()).hexdigest()
+                      for p in (skills / name / folder).iterdir()
+                      if p.is_file() and p.name in expected}
+            check(actual == expected, f'Shared core {folder} drift: {name}')
     print('Packaging checks passed for six independent skill directories', flush=True)
     env = dict(os.environ, PYTHONDONTWRITEBYTECODE='1')
     failed = []

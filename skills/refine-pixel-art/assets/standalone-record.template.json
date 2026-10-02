@@ -1,0 +1,13 @@
+{
+  "id": "replace-with-delivery-id",
+  "file": "replace-with-native-study.png",
+  "source_file": "replace-with-preserved-source.png",
+  "role": "identity",
+  "status": "study",
+  "technical_status": "unverified",
+  "visual_status": "unverified",
+  "review_file": "review.json",
+  "provenance_file": "normalization.provenance.json",
+  "limitations": "Replace with actual remaining limitations or explicitly state none observed within this role's reviewed scope",
+  "approval": null
+}

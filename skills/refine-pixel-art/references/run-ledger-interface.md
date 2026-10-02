@@ -5,13 +5,13 @@
 ## Required operating sequence
 
 1. Create one **new, nonexistent** run directory before any generation. Snapshot all participating skills, including their complete resources and scripts, in this single run. Supply the actual user request, not an expanded generation prompt. Skill source directories must not be edited during initialization.
-2. Read/use the pinned `RUN/snapshots/LABEL/` skills throughout this trial. Invoke scripts explicitly using `python3` or `bash`; snapshots are read-only. A later source edit does not change this run's pinned version.
+2. Read/use the pinned `RUN/snapshots/LABEL/` skills throughout this workflow. Invoke scripts explicitly using `python3` or `bash`; snapshots are read-only. A later source edit does not change this run's pinned version.
 3. Record each actual planning decision, chosen candidate/pose, actual check result, failure, and review. Attach logs, manifests and screenshots when applicable. A `check` event must report the check performed and measured results, not just an intention to check.
 4. Immediately **before every external generation call**, record `generation-start`. Proceed only if it returns exit 0 and an attempt ID. Use the exact prompt, all tool arguments, and every supplied reference. Start records reserve budget, including calls subsequently failing, cancelled, or lacking a returned result. Never launch the call first and backfill a start record.
 5. After the call returns, record `generation-end` for that attempt. Copy the **original returned files**, before cleanup/resizing/assembly, using `--output`. Record a failed/cancelled outcome and a redacted error when the call fails. Include raw, secret-free tool response metadata with `--response-file` if available.
 6. Record derived artifacts and their checks separately using `event --artifact`. Do not relabel a derived export as an original generator output.
 7. `finalize` once with the actual result: `succeeded`, `failed`, or `incomplete`. Failed attempts and checks remain in the event history even if a later bounded repair succeeds. An interrupted call can remain missing only in a failed/incomplete run.
-8. `verify` checks the evidence. A clean validation trial, changed skill snapshot, corrupt event chain, or changed budget requires a **separate newly initialized run**. Do not modify or remove prior evidence to turn a failed trial into a clean one. Link the earlier run ID and changed version hashes in a new run's `decision` event.
+8. `verify` checks the evidence. Do not modify snapshots, event history or budgets to make failed evidence pass. If a damaged or terminal run cannot continue, preserve it and document the prior counters/evidence in any explicitly authorized continuation; never reset the overall allowance.
 
 ## Budgets and pose semantics
 
@@ -27,7 +27,7 @@ Use `--pose POSE` whenever generating an intended animation pose. Stage/pose pai
 
 A targeted repair **must** use `--repair-of ATTEMPT`, matching that attempt's stage and pose (including null). The linked attempt must already be completed. Repairs of pose-less concept candidates spend stage repair budget but have no per-pose budget. With v4 total-repair accounting, the same semantic pose retains its per-pose repair counter across stages. A first call with the same pose name at another stage is another distinct `(stage, pose)` entry and spends a new-pose slot. A subsequent call for the same stage/pose must name `--repair-of`. Repair failures still spend all applicable limits. Budget denial appends `generation-blocked` and exits 2; it does not authorize a generator call or spend another attempt.
 
-Limits are per run. If a project authorizes several trials under one total project cap, reserve each run's allowance in that project plan first; this helper does not silently grant a fresh overall project allowance.
+Limits are per run. If a project authorizes several runs under one total project cap, reserve each run's allowance in that project plan first; this helper does not silently grant a fresh overall project allowance.
 
 ## CLI
 

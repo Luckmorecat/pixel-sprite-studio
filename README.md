@@ -34,7 +34,11 @@ The examples use `--copy` because the ledger intentionally rejects symlink skill
 - `animate-pixel-sprite`: plan/generate missing poses or assemble existing poses, preserving native assets and exact timing
 - `export-to-aseprite`: package supplied PNGs, explicit sequences, sheets or genuine layers; only on an explicit export request
 
-Typical flow: identity → optional views/action → refinement → optional animation. Export is independent and never an automatic final step. Each skill bundles its own complete helper set, so installing one does not depend on neighboring folders. Shared core helpers are deliberately duplicated and validated for consistency. Templates contain illustrative values; adapt them to the actual project.
+Typical flow: identity → optional views/action → refinement → optional animation. Export is independent and never an automatic final step. Each skill bundles its own complete helper set, so installing one does not depend on neighboring folders. Shared scripts, references and templates come from canonical `authoring/core/` sources; generated copies are validated byte-for-byte, and each installed package remains self-contained. Templates contain illustrative values; adapt them to the actual project.
+
+## Choose the amount of workflow
+
+A one-stage task ending in this session uses a compact standalone record: request, preserved sources, bounded attempts, separate technical/visual reviews and approval evidence. It does not require frozen skill snapshots or a portable bundle. Multi-stage and cross-session work uses the full project ledger and portable handoff. The request determines the path, not how much paperwork the agent prefers. Supplied full runs retain their original history and counters.
 
 ## Runtime requirements
 
@@ -66,9 +70,9 @@ Do not commit user images, generated art, private prompts, run ledgers, approval
 python3 scripts/validate.py
 ```
 
-This checks six frontmatter names, JSON templates, bundled runtime instructions, shared-helper parity, and executes each package's synthetic unit tests in an isolated process. Tests make no image-generation or network calls. Skipped tests are reported and are not evidence of coverage. Unit tests establish technical behavior, not artistic success or an Aseprite desktop-open check.
+This checks six frontmatter names, JSON templates, bundled runtime instructions, generated-source parity across every file and shared scripts/references/templates, and executes each package's synthetic unit tests in an isolated process. Tests make no image-generation or network calls. Skipped tests are reported and are not evidence of coverage. Unit tests establish technical behavior, not artistic success or an Aseprite desktop-open check.
 
-The portable distribution starts from core version 4.1.0 and the standalone exporter. Packaging changes add runtime guidance, remove host-specific product allowlists, and parameterize the ledger tool-name example; original helper algorithms and art workflows are preserved. The exporter retains explicit-only invocation metadata.
+Core 4.2.0 adds an explicit lightweight standalone path while preserving existing full-project schemas. Compact checkpoint exports are cross-checked against their included record, and accepted replacements can explicitly supersede a recorded study without erasing history. Static single-cel handoffs use the existing refinement-stage envelope. The corrected build passes 992 helper test executions (232 unique tests) plus package parity. Independent set/key/final-animation review supplements creator checks when clean reviewers are available; ordinary single stills stay lightweight, and unavailable review is disclosed. Frozen trials demonstrate a lighter path for one already-native standalone task, not better generated-art reliability; see [validation](VALIDATION.md) for scope and limits. Exporter 1.0.2 preserves its existing encoder. See [migration](docs/MIGRATION-4.2.md), [authoring](docs/maintainers/authoring.md) and [maintainer evaluation](docs/maintainers/evaluation.md).
 
 ## License
 

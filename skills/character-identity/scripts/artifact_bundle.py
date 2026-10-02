@@ -498,6 +498,37 @@ def check_approval(root, asset):
         safe_file(root, approval['delegation_file'], 'approval.delegation_file')
 
 
+def check_compact_checkpoint(root, supports, evidence, counters, original, project):
+    """Cross-check compact migration evidence; legacy attempts-only bundles stay valid."""
+    compact = []
+    for support in supports:
+        if 'directory' not in support:
+            continue
+        task = support_directory(root, support['directory'])
+        record_file = task / 'task.json'
+        if record_file.is_file() and read_json(record_file).get('schema') == 'pixel-standalone/1.0':
+            compact.append(task)
+    if not compact and 'standalone_record_sha256' not in evidence:
+        return
+    require(len(compact) == 1, 'Compact budget evidence needs exactly one included standalone task checkpoint')
+    task = compact[0]
+    require(evidence.get('standalone_record_sha256') == sha256(task / 'task.json'),
+            'Standalone budget export is stale: source record hash differs')
+    # Import lazily: standalone_record reuses the bundle's native and counter checks.
+    from standalone_record import inspect
+    record, report = inspect(task)
+    attempts = [{key: attempt[key] for key in ('attempt_id', 'stage', 'pose_id', 'repair_of', 'outcome')}
+                for attempt in record['attempts']]
+    require(evidence.get('attempts') == attempts, 'Standalone exported attempts differ from included record')
+    require(evidence.get('budget_state') == report['budget_state'] == counters,
+            'Standalone exported counters differ from included record')
+    for key in ('history_scope', 'prior_generation_usage'):
+        require(evidence.get(key) == record[key], 'Standalone exported history differs from included record')
+    require(record['project']['sha256'] == sha256(original), 'Standalone checkpoint project differs from bundle source')
+    require(record['profile']['sha256'] == project['_meta']['profile_sha256'],
+            'Standalone checkpoint profile differs from bundle profile')
+
+
 def check_bundle(directory):
     root = Path(directory).resolve(strict=True)
     no_symlinks(Path(directory))
@@ -555,6 +586,7 @@ def check_bundle(directory):
     else:
         evidence = read_json(safe_file(root, manifest.get('budget_evidence_file'), 'budget_evidence_file'))
         counters = budget_from_attempts(evidence.get('attempts'), project['budget'])
+        check_compact_checkpoint(root, supports, evidence, counters, original, project)
         require(manifest.get('continuation_mode') == 'evidence_only', 'No run directory: continuation must be evidence_only')
     require(manifest.get('budget_state') == counters, 'Budget counters are stale or conflict with evidence')
     assets = manifest.get('assets')

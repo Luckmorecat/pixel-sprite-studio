@@ -1,0 +1,28 @@
+{
+  "schema_version": "3.0",
+  "asset_id": "replace-with-asset-id",
+  "brief": "Replace with the exact ordinary user request",
+  "profile": "profile.json",
+  "native_canvas_px": [
+    128,
+    128
+  ],
+  "anchor_px": null,
+  "limits": {
+    "palette_max": 32,
+    "binary_alpha": true,
+    "min_margin": 1
+  },
+  "budget": {
+    "max_calls": 24,
+    "max_total_repairs": 6,
+    "repairs_per_pose": 2
+  },
+  "animation": {
+    "mode": "local",
+    "duration_ms": 3000,
+    "max_unique_drawings": 8,
+    "max_timeline_entries": 16,
+    "min_unique_drawings": 2
+  }
+}
