@@ -1,0 +1,8 @@
+interface:
+  display_name: Export to Aseprite
+  short_description: Package exact pixels and timing into Aseprite
+  default_prompt: Use $export-to-aseprite to package this art as an Aseprite file.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  allow_implicit_invocation: false

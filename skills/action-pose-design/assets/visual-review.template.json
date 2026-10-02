@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "export_manifest_sha256": null,
+  "requested_action": null,
+  "reviewer": null,
+  "native_size_reviewed": false,
+  "integer_enlargement_reviewed": false,
+  "poses": [],
+  "transitions_including_wrap": [],
+  "playback": {
+    "mode": "unavailable",
+    "viewer": null,
+    "cycles_continuously_observed": 0,
+    "sampled_frame_indices_and_times": [],
+    "limitations": [],
+    "native_action_phases_observed": [],
+    "native_action_phase_coverage": "unverified"
+  },
+  "criteria": {
+    "face_readability": {
+      "status": "uncertain",
+      "evidence": null
+    },
+    "requested_action": {
+      "status": "uncertain",
+      "evidence": null
+    },
+    "identity_and_style": {
+      "status": "uncertain",
+      "evidence": null
+    },
+    "transitions_and_closure": {
+      "status": "uncertain",
+      "evidence": null
+    },
+    "mask_seams_and_clipping": {
+      "status": "uncertain",
+      "evidence": null
+    },
+    "prop_contact_and_actor_continuity": {
+      "status": "uncertain",
+      "evidence": null
+    }
+  },
+  "overall_status": "unverified",
+  "remaining_defects": [],
+  "repairs_or_timing_changes": []
+}

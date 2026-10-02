@@ -1,0 +1,9 @@
+interface:
+  display_name: Character Identity
+  short_description: Build a recognizable pixel-first character identity
+  default_prompt: Use $character-identity to create and accept a pixel-first character
+    identity at my target native size.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  allow_implicit_invocation: true

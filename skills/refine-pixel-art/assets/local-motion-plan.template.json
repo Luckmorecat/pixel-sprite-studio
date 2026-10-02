@@ -1,0 +1,15 @@
+{
+  "schema_version": 2,
+  "animation_mode": "local",
+  "motion_regions": [],
+  "original_moving_regions": [],
+  "motion_envelope_regions": [],
+  "vacated_regions": [],
+  "anchor_regions": [],
+  "coverage_review": {
+    "status": "unreviewed",
+    "master_sha256": "",
+    "contract_sha256": "",
+    "notes": ""
+  }
+}

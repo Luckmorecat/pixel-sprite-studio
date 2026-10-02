@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "mode": "layers",
+  "canvas": [
+    64,
+    64
+  ],
+  "layers": [
+    {
+      "name": "body",
+      "opacity": 255,
+      "visible": true,
+      "editable": true,
+      "blend_mode": "normal"
+    },
+    {
+      "name": "prop",
+      "opacity": 255,
+      "visible": true,
+      "editable": true,
+      "blend_mode": "normal"
+    }
+  ],
+  "frames": [
+    {
+      "duration_ms": 140,
+      "cels": [
+        {
+          "layer": "body",
+          "png": "body-rest.png",
+          "x": 0,
+          "y": 0,
+          "opacity": 255
+        },
+        {
+          "layer": "prop",
+          "png": "prop-rest.png",
+          "x": 19,
+          "y": 24,
+          "opacity": 255
+        }
+      ]
+    },
+    {
+      "duration_ms": 90,
+      "cels": [
+        {
+          "layer": "body",
+          "png": "body-lift.png",
+          "x": 0,
+          "y": 0,
+          "opacity": 255
+        },
+        {
+          "layer": "prop",
+          "png": "prop-lift.png",
+          "x": 20,
+          "y": 18,
+          "opacity": 255
+        }
+      ]
+    }
+  ]
+}

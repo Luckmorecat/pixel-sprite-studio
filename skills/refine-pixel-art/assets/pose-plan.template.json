@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "project": "../project.json",
+  "scope": "animation",
+  "tag": "replace-with-action",
+  "master_pose": "rest",
+  "required_phases": [
+    "rest",
+    "action",
+    "recovery"
+  ],
+  "poses": {
+    "rest": {
+      "file": "../masters/master.png",
+      "status": "study",
+      "sha256": null,
+      "quality_review": {
+        "status": "unverified",
+        "artifact_sha256": null,
+        "notes": "Replace with actual native visual acceptance; status accepted requires matching file hashes"
+      }
+    },
+    "action": {
+      "file": "native/action.png",
+      "status": "study",
+      "sha256": null,
+      "quality_review": {
+        "status": "unverified",
+        "artifact_sha256": null,
+        "notes": "Replace with actual native visual acceptance; status accepted requires matching file hashes"
+      }
+    },
+    "recovery": {
+      "file": "native/recovery.png",
+      "status": "study",
+      "sha256": null,
+      "quality_review": {
+        "status": "unverified",
+        "artifact_sha256": null,
+        "notes": "Replace with actual native visual acceptance; status accepted requires matching file hashes"
+      }
+    }
+  },
+  "timeline": [
+    {
+      "pose_id": "rest",
+      "phase": "rest",
+      "duration_ms": 1000
+    },
+    {
+      "pose_id": "action",
+      "phase": "action",
+      "duration_ms": 900
+    },
+    {
+      "pose_id": "recovery",
+      "phase": "recovery",
+      "duration_ms": 500
+    },
+    {
+      "pose_id": "rest",
+      "phase": "rest",
+      "duration_ms": 600
+    }
+  ],
+  "animation_mode": "local",
+  "motion_regions": [],
+  "planning_notes": "Draft example only, not accepted art. Replace semantic phases, durations, native paths, status/hashes and measured predeclared motion geometry for this request. Empty regions allow no changes. Project requirements are enforced; do not change them merely to pass."
+}

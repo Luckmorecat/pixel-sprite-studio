@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "mode": "sequence",
+  "frames": [
+    {
+      "png": "rest.png",
+      "duration_ms": 180
+    },
+    {
+      "png": "lift.png",
+      "duration_ms": 85
+    },
+    {
+      "png": "rest.png",
+      "duration_ms": 240
+    }
+  ],
+  "tags": [
+    {
+      "name": "wave",
+      "from": 0,
+      "to": 2,
+      "direction": "forward",
+      "repeat": 0
+    }
+  ]
+}

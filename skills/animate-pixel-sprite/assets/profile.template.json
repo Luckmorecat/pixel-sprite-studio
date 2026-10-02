@@ -1,0 +1,16 @@
+{
+  "medium": "pixel_art",
+  "identity_id": "replace-with-character-id",
+  "identity": {
+    "silhouette": "Describe accepted silhouette",
+    "proportions": {},
+    "recognizable_features": [],
+    "outfit_components": [],
+    "asymmetric_details": []
+  },
+  "palette_roles": {},
+  "view_convention": "character-left/right; list intended camera angles",
+  "inferred_hidden_details": [],
+  "permitted_deformations": [],
+  "approval_scope": "Record current task delegation or requested checkpoint"
+}

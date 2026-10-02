@@ -1,0 +1,9 @@
+interface:
+  display_name: Multi-view Reference
+  short_description: Derive consistent views from an accepted identity
+  default_prompt: Use $multi-view-reference to derive the requested pixel-art views
+    from my accepted character identity.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  allow_implicit_invocation: true

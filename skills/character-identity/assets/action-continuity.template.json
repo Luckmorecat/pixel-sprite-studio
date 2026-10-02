@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "action": null,
+  "view_and_direction": null,
+  "actor_roles": {
+    "moving_part_id": null,
+    "support_part_id": null,
+    "viewer_side_mapping": null,
+    "expected_visible_part_count": null
+  },
+  "prop": {
+    "identity": null,
+    "fixed_attachment": null,
+    "origin": null,
+    "destination": null
+  },
+  "native_master_action_readiness": {
+    "status": "unverified",
+    "visible_action_surface": null,
+    "material_separation": null,
+    "motion_clearance": null,
+    "local_coverage": {
+      "status": "unverified",
+      "whole_original_moving_part": null,
+      "intended_motion_envelope": null,
+      "vacated_or_erased_area": null,
+      "boundary_exterior_review": null,
+      "review_backgrounds": [
+        "white",
+        "dark",
+        "checker"
+      ],
+      "preflight_report": null
+    }
+  },
+  "hardest_recognition_key": null,
+  "phases": [],
+  "phase_entry_fields": [
+    "pose_id",
+    "object_shape_and_location",
+    "moving_part_state",
+    "support_part_state",
+    "contact_or_release",
+    "occluded_or_removed_resting_parts",
+    "native_recognition_criterion",
+    "rejection_condition",
+    "accepted_neighbor_reference",
+    "review_status",
+    "review_evidence",
+    "actual_generated_envelope_fits_declared_mask",
+    "old_part_erasure_and_exterior_remnants",
+    "contrast_pair_review_evidence"
+  ],
+  "new_pair_reviews": [],
+  "limitations": []
+}

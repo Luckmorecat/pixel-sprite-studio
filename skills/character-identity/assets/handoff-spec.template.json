@@ -1,0 +1,37 @@
+{
+  "assets": [
+    {
+      "approval": null,
+      "file": "identity.png",
+      "id": "identity-01",
+      "provenance_file": "provenance.json",
+      "review_file": "review.json",
+      "role": "identity",
+      "source": {
+        "file": "identity.png",
+        "kind": "generated"
+      },
+      "status": "study",
+      "technical_status": "unverified",
+      "visual_status": "unverified"
+    }
+  ],
+  "budget_evidence_file": "budget-evidence.json",
+  "next_step": "Review the identity study at actual native preview size",
+  "project": "project.json",
+  "required_assets": [
+    "identity-01"
+  ],
+  "schema_version": 1,
+  "stage": "identity",
+  "status": "study",
+  "supports": [
+    {
+      "file": "request.txt",
+      "role": "request"
+    }
+  ],
+  "technical_status": "unverified",
+  "timeline": [],
+  "visual_status": "unverified"
+}

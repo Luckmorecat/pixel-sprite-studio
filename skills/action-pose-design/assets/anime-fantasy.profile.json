@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "profile_id": "anime-fantasy-example",
+  "status": "example_style_profile_not_a_user_approval",
+  "scope": "Optional portable art direction. Replace or revise for the current project.",
+  "visual_direction": {
+    "mood": ["warm", "playful", "fantastical"],
+    "proportions": "Stylized anime-inspired proportions chosen for the intended native canvas",
+    "shape_language": "Clear silhouette and large coherent forms; preserve characteristic ears, tail and costume shapes when present",
+    "pixel_craft": "Intentional hard-edged clusters; controlled contour and staircase rhythm; selective interior detail",
+    "lighting": "A consistent single key light with restrained highlights",
+    "shading": "Usually two or three values per material, adjusted to the design",
+    "outline": "Dark colored contours when useful; do not force outlines on all assets",
+    "avoid": ["airbrushed gradients", "noisy single-pixel texture", "unrequested identity or costume changes"]
+  },
+  "content": {
+    "default": "nonsexual",
+    "adult_styling": "Any sexualized variant must be explicitly adult with adult visual portrayal; never sexualize a childlike design"
+  },
+  "technical_defaults": {
+    "native_canvas_px": [64, 64],
+    "preview_scale": 6,
+    "max_opaque_colors": 32,
+    "alpha_values": [0, 255],
+    "resampling": "nearest_neighbor",
+    "dithering": "off",
+    "color_space": "sRGB",
+    "background": "transparent"
+  },
+  "animation_defaults": {
+    "camera": "locked",
+    "root_motion": "none unless requested",
+    "anchor": "measure on approved master; do not recenter independently",
+    "source_layer_expectation": "truthful flattened layer unless genuinely separated native art is created"
+  }
+}

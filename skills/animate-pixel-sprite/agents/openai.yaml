@@ -1,0 +1,9 @@
+interface:
+  display_name: Animate Pixel Sprite
+  short_description: Animate native sprites with local or full-body motion
+  default_prompt: Use $animate-pixel-sprite to make the requested animation from my
+    accepted native master and preserve a portable PNG timeline.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  allow_implicit_invocation: true

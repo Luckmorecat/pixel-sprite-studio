@@ -1,0 +1,9 @@
+interface:
+  display_name: Action Pose Design
+  short_description: Pose a pixel character without changing its identity
+  default_prompt: Use $action-pose-design to stage my accepted character for the requested
+    action while preserving identity.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  allow_implicit_invocation: true

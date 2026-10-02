@@ -1,0 +1,9 @@
+interface:
+  display_name: Refine Pixel Art
+  short_description: Refine single sprites or consistent native pixel sets
+  default_prompt: Use $refine-pixel-art to refine this accepted identity, view or
+    action set into reviewed native PNG masters.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  allow_implicit_invocation: true

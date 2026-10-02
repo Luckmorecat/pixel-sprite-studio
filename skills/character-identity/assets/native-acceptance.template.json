@@ -1,0 +1,12 @@
+{
+  "status": "study",
+  "artifact_sha256": null,
+  "notes": "Fill after native visual review and actual authority check; accepted status is not inferred from technical QA",
+  "approval": {
+    "actor": null,
+    "asset_sha256": null,
+    "source_sha256": null,
+    "evidence_file": null,
+    "delegation_file": null
+  }
+}

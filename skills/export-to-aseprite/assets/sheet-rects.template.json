@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "mode": "sheet",
+  "png": "sheet.png",
+  "frames": [
+    {
+      "rect": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "duration_ms": 120
+    },
+    {
+      "rect": [
+        35,
+        1,
+        32,
+        32
+      ],
+      "duration_ms": 80
+    }
+  ]
+}
